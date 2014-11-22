@@ -1,19 +1,15 @@
 package cz.fit.cvut.mdw;
 import javax.jws.WebMethod;
 import javax.jws.WebService;
-import javax.xml.ws.Endpoint;
 import java.math.BigDecimal;
-import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.List;
-import java.util.Map;
-import static cz.fit.cvut.mdw.BankAccount.BankAccountNumber;
+import javax.jws.WebParam;
+import javax.xml.ws.WebServiceException;
 
 /**
  * Created by David on 22. 11. 2014.
  */
-@WebService()
-public class BankAccountService {
+@WebService(serviceName = "BankAccountService")
+public class BankAccountService implements IBankAccountService {
 
     BankAccountDb accountDb;
 
@@ -23,36 +19,24 @@ public class BankAccountService {
     }
 
     @WebMethod
-    public boolean accountExists(BankAccountNumber accountNumber)
+    public boolean accountExists(@WebParam(name = "bankAccountNumber") String accountNumber)
     {
         return this.accountDb.accountExists(accountNumber);
     }
 
     @WebMethod
-    public boolean validateBalance(BankAccountNumber accountNumber, BigDecimal balance)
+    public boolean validateBalance(@WebParam(name = "bankAccountNumber") String accountNumber, 
+            @WebParam(name = "amount") double amount) throws BankAccountDb.BankAccountNotFoundException 
     {
         BankAccount account = this.accountDb.getAccount(accountNumber);
-        return account.balance.compareTo(balance) >= 0;
+        return account.balance.compareTo(new BigDecimal(amount)) >= 0;
     }
 
     @WebMethod
-    public BigDecimal changeBalance(BankAccountNumber accountNumber, BigDecimal change)
+    public BigDecimal changeBalance(@WebParam(name = "bankAccountNumber") String accountNumber, 
+            @WebParam(name = "amount") double amount) throws BankAccountDb.BankAccountNotFoundException 
     {
         BankAccount account = this.accountDb.getAccount(accountNumber);
-        return account.changeBalance(change);
+        return account.changeBalance(new BigDecimal(amount));
     }
-
-    /*
-
-    Add operation to validate existence of Bank account by account number (returns true/false)
-    Add operation to validate Account Balance by account number (returns true/false)
-    Add operation to change Account Balance (+/-)
-
-     */
-
-  public static void main(String[] argv) {
-    Object implementor = new BankAccountService ();
-    String address = "http://localhost:9000/BankAccountService";
-    Endpoint.publish(address, implementor);
-  }
 }

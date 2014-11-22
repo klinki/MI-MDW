@@ -1,25 +1,32 @@
 package cz.fit.cvut.mdw;
 import javax.jws.WebMethod;
 import javax.jws.WebService;
-import javax.xml.ws.Endpoint;
-import java.math.BigDecimal;
-import static cz.fit.cvut.mdw.BankAccount.BankAccountNumber;
-
+import javax.jws.WebParam;
+import cz.fit.cvut.mdw.clients.BankAccountServiceClient;
 /**
  * Created by David on 22. 11. 2014.
  */
-@WebService()
-public class BankTransferService {
+@WebService(serviceName = "BankTransferService")
+public class BankTransferService implements IBankAccountTransfer {
 
-    @WebMethod
-    public boolean transfer(BankAccountNumber from, BankAccountNumber to, BigDecimal amount)
+    IBankAccountService service;
+    
+    public BankTransferService()
     {
-        BankAccountService service = new BankAccountService();
+        this.service = new BankAccountServiceClient();
+    }
+   
+    @WebMethod
+    @Override
+    public boolean transfer(@WebParam(name = "sourceBankAccountNumber") String from, 
+            @WebParam(name = "targetBankAccountNumber") String to, 
+            @WebParam(name = "amount") double amount)
+    {   
 
-        if(service.accountExists(from) && service.accountExists(to)) {
-            if (service.validateBalance(from, amount)) {
-                service.changeBalance(from, amount.negate());
-                service.changeBalance(to, amount);
+        if(this.service.accountExists(from) && this.service.accountExists(to)) {
+            if (this.service.validateBalance(from, amount)) {
+                this.service.changeBalance(from, -amount);
+                this.service.changeBalance(to, amount);
 
                 return true;
             }
@@ -27,23 +34,4 @@ public class BankTransferService {
 
         return false;
     }
-
-    /*
-     Add operation transfer(from,to,amount)
-
-    from - Account Number
-    to - Account Number
-    amount - Numeric value
-    the logic of operation:
-        check existence of from and to account and check the balance of from account (use SOAP communication with Bank Account Web Service)
-        if ok –> change balance of both accounts and return true
-        else –> return false
-
-You can use automatic generation of client for Bank Account Service
-     */
-  public static void main(String[] argv) {
-    Object implementor = new BankTransferService ();
-    String address = "http://localhost:9000/BankTransferService";
-    Endpoint.publish(address, implementor);
-  }
 }

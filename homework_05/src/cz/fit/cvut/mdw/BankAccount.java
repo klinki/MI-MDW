@@ -6,35 +6,10 @@ import java.math.BigDecimal;
  * Created by David on 22. 11. 2014.
  */
 public class BankAccount {
-    public static class BankAccountNumber
-    {
-        private int number;
-
-        public BankAccountNumber(int number)
-        {
-            this.number = number;
-        }
-
-        @Override
-        public boolean equals(Object o) {
-            if (this == o) return true;
-            if (o == null || getClass() != o.getClass()) return false;
-
-            BankAccountNumber that = (BankAccountNumber) o;
-
-           return (this.number == that.number);
-        }
-
-        @Override
-        public int hashCode() {
-            return number;
-        }
-    }
-
-    BankAccountNumber number;
+    String number;
     BigDecimal balance;
 
-    public BankAccount(BankAccountNumber number, BigDecimal balance) {
+    public BankAccount(String number, BigDecimal balance) {
         this.number = number;
         this.balance = balance;
     }
@@ -47,5 +22,9 @@ public class BankAccount {
 
     public BigDecimal getBalance() {
         return balance;
+    }
+
+    public String getNumber() {
+        return number;
     }
 }
