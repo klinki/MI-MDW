@@ -75,6 +75,9 @@ public class TestServlet extends HttpServlet {
             out.println("<p>Checking balance of acc. 0000002, balance = 4500? : <strong>" + service.validateBalance(second, 4500) + "</strong></p>");           
             out.println("<p>Checking balance of acc. 0000002, balance = 5000? : <strong>" + service.validateBalance(second, 5000) + "</strong></p>");           
 
+            out.println("<p>New balance of acc. 0000001: <strong>" + service.getBalance(first) + "</strong></p>");           
+            out.println("<p>New balance of acc. 0000002: <strong>" + service.getBalance(second) + "</strong></p>");           
+
             out.println("</body>");
             out.println("</html>");
         }

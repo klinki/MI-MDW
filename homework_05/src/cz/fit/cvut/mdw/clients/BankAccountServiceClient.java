@@ -33,7 +33,6 @@ public class BankAccountServiceClient implements IBankAccountService {
 
     @Override
     public BigDecimal getBalance(String accountNumber) {
-        // return port.getBalance(accountNumber);
-        return new BigDecimal(0);
+        return port.getBalance(accountNumber);
     }
 }
