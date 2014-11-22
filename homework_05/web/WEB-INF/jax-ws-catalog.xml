@@ -1,9 +1,0 @@
-<?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<catalog xmlns="urn:oasis:names:tc:entity:xmlns:xml:catalog" prefer="system">
-    <system systemId="http://localhost:8080/homework_05/services/BankAccountService?wsdl" uri="wsdl/localhost_8080/homework_05/services/BankAccountService.wsdl"/>
-    <system systemId="http://localhost:8080/homework_05/services/BankAccountService?xsd=1" uri="wsdl/localhost_8080/homework_05/services/BankAccountService.xsd_1.xsd"/>
-    <system systemId="http://localhost:8080/homework_05/BankTransferService?wsdl" uri="wsdl/localhost_8080/homework_05/BankTransferService.wsdl"/>
-    <system systemId="http://localhost:8080/homework_05/BankTransferService?xsd=1" uri="wsdl/localhost_8080/homework_05/BankTransferService.xsd_1.xsd"/>
-    <system systemId="http://localhost:8080/homework_05/BankAccountService?wsdl" uri="wsdl/localhost_8080/homework_05/BankAccountService.wsdl"/>
-    <system systemId="http://localhost:8080/homework_05/BankAccountService?xsd=1" uri="wsdl/localhost_8080/homework_05/BankAccountService.xsd_1.xsd"/>
-</catalog>
