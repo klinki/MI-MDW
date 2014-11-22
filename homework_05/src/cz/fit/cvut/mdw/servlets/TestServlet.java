@@ -3,7 +3,7 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package servlets;
+package cz.fit.cvut.mdw.servlets;
 
 import cz.fit.cvut.mdw.IBankAccountService;
 import cz.fit.cvut.mdw.IBankAccountTransfer;
