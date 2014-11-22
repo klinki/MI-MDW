@@ -6,6 +6,7 @@
 package cz.fit.cvut.mdw;
 
 import java.math.BigDecimal;
+import javax.jws.WebParam;
 
 /**
  *
@@ -15,4 +16,5 @@ public interface IBankAccountService {
     public boolean accountExists(String accountNumber);
     public boolean validateBalance(String accountNumber, double balance);
     public BigDecimal changeBalance(String accountNumber, double change);
+    public BigDecimal getBalance(String accountNumber);
 }

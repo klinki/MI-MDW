@@ -3,7 +3,6 @@ import javax.jws.WebMethod;
 import javax.jws.WebService;
 import java.math.BigDecimal;
 import javax.jws.WebParam;
-import javax.xml.ws.WebServiceException;
 
 /**
  * Created by David on 22. 11. 2014.
@@ -38,5 +37,13 @@ public class BankAccountService implements IBankAccountService {
     {
         BankAccount account = this.accountDb.getAccount(accountNumber);
         return account.changeBalance(new BigDecimal(amount));
+    }
+    
+    @WebMethod
+    @Override
+    public BigDecimal getBalance(@WebParam(name = "bankAccountNumber") String accountNumber)
+    {
+        BankAccount account = this.accountDb.getAccount(accountNumber);
+        return account.getBalance();
     }
 }

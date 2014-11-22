@@ -7,6 +7,7 @@ package cz.fit.cvut.mdw.clients;
 
 import cz.fit.cvut.mdw.IBankAccountService;
 import java.math.BigDecimal;
+import java.math.BigInteger;
 
 /*
  * @author david
@@ -29,5 +30,10 @@ public class BankAccountServiceClient implements IBankAccountService {
     public boolean validateBalance(java.lang.String bankAccountNumber, double amount) {
         return port.validateBalance(bankAccountNumber, amount);
     }
-    
+
+    @Override
+    public BigDecimal getBalance(String accountNumber) {
+        // return port.getBalance(accountNumber);
+        return new BigDecimal(0);
+    }
 }

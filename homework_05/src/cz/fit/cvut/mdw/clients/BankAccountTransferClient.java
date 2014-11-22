@@ -5,16 +5,16 @@
  */
 package cz.fit.cvut.mdw.clients;
 import cz.fit.cvut.mdw.IBankAccountTransfer;
-import java.math.BigDecimal;
 /**
  *
  * @author david
  */
 public class BankAccountTransferClient implements IBankAccountTransfer {
-
+    generated.client.BankTransferService_Service service = new generated.client.BankTransferService_Service();
+    generated.client.BankTransferService port = service.getBankTransferServicePort();
+        
     @Override
-    public boolean transfer(String from, String to, double amount) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
-    }
-    
+    public boolean transfer(String sourceBankAccountNumber, String targetBankAccountNumber, double amount) {
+        return port.transfer(sourceBankAccountNumber, targetBankAccountNumber, amount);
+    }    
 }
