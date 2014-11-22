@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html><head>
+<meta http-equiv="content-type" content="text/html; charset=UTF-8">
+<title>Servlet TestServlet</title>
+</head>
+<body>
+<h1>Servlet TestServlet at /homework_05</h1>
+<p>Initial state: </p>
+<p>Account 1: number -  <strong>0000001</strong>, balance: <strong>0</strong></p>
+<p>Account 2: number -  <strong>0000002</strong>, balance: <strong>5000</strong></p>
+<p>-----------------------------------------</p>
+<p>Validating existing account number 0000001: <strong>true</strong></p>
+<p>Validating existing account number 0000002: <strong>true</strong></p>
+<p>Validating not-existing account number 0000000: <strong>false</strong></p>
+<p>Checking balance of acc. 0000001, balance = 100? : <strong>false</strong></p>
+<p>Checking balance of acc. 0000001, balance = 0? : <strong>true</strong></p>
+<p>Checking balance of acc. 0000002, balance = 5000? : <strong>true</strong></p>
+<p>Transfer 100 from invalid acc. 0000000 to 0000001: <strong>false</strong></p>
+<p>Transfer 100 from  0000001 to 0000002: <strong>false</strong></p>
+<p>Transfer 500 from  0000002 to 0000001: <strong>true</strong></p>
+<p>Checking balance of acc. 0000001, balance = 500? : <strong>true</strong></p>
+<p>Checking balance of acc. 0000002, balance = 4500? : <strong>true</strong></p>
+<p>Checking balance of acc. 0000002, balance = 5000? : <strong>false</strong></p>
+<p>New balance of acc. 0000001: <strong>500</strong></p>
+<p>New balance of acc. 0000002: <strong>4500</strong></p>
+
+
+</body></html>
